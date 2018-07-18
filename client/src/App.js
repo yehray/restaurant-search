@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import SearchBar from './components/SearchBar';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      title: "Welcome",
+    };
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,7 +23,10 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <Header title={this.state.title}/>
+          <SearchBar/>
+          <Footer/>
+        </p> 
       </div>
     );
   }
