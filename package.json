@@ -1,12 +1,10 @@
 {
-  "name": "client",
+  "name": "restaurant-searcher",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "bootstrap": "^4.1.2",
     "react": "^16.4.1",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },
