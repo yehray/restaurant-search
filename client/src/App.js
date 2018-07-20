@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       title: "Welcome",
     };
-    console.log(this.props);
   }
 
   render() {
