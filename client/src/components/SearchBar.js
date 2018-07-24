@@ -6,25 +6,31 @@ class SearchBar extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      response: '',
+      restaurants: [],
       searchTerm: '',
       locationTerm: ''
     }
-   this.componentDidMount = this.componentDidMount.bind(this);
+   this.handleSearch = this.handleSearch.bind(this);
    this.handleSearchChange = this.handleSearchChange.bind(this);
    this.handleLocationChange = this.handleLocationChange.bind(this);
   //  this.callApi = this.callApi.bind(this);
   }
 
-  componentDidMount() {
+  handleSearch(e){
+    var self = this;
+    const restaurants = this.state.restaurants;
     console.log(this.state.searchTerm);
     console.log(this.state.locationTerm);
     fetch('/api/'+ this.state.searchTerm +'/' + this.state.locationTerm)
     .then((response) => response.json())
     .then((responseJSON) => {
-      this.setState({ response: responseJSON.express })
-      console.log(responseJSON);
-    });
+      responseJSON.express.map(function(object){
+        restaurants.push(object.name);
+        console.log(object.name);
+      })
+      self.setState({restaurants});
+    })
+    
     // this.callApi()
     //   .then(res => this.setState({ response: res.express }))
     //   .catch(err => console.log(err));
@@ -55,7 +61,8 @@ class SearchBar extends React.Component{
       <label>Location: 
       <input type="text" name="location" placeholder="Location..." value={this.state.locationTerm} onChange={this.handleLocationChange}/>
       </label>
-      <button type="button" onClick={this.componentDidMount}>Go</button>
+      <button type="button" onClick={this.handleSearch}>Go</button>
+      {this.state.restaurants.map(restaurant => <li> {restaurant} </li>)}
       </form>
     );
   };

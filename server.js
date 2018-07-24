@@ -20,15 +20,22 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/api/hello', (req, res) => {
+app.get('/api/:search/:location', (req, res, next) => {
+  var searchTerm = req.params.search;
+  var locationTerm = req.params.location; 
   const searchRequest = {
-    term:'Four Barrel Coffee',
-    location: 'san francisco, ca'
+    term: "food",
+    location: "milpitas",
+    limit: 50
   };
+
   client.search(searchRequest).then(response => {
-    const firstResult = response.jsonBody.businesses[0];
-    const prettyJson = JSON.stringify(firstResult, null, 4);
-    console.log(prettyJson);
+    const firstResult = response.jsonBody.businesses;
+    const prettyJson = JSON.parse(JSON.stringify(firstResult, null, 4));
+    for(var i = 0; i < prettyJson.length; i++) {
+      var obj = prettyJson[i];
+      console.log(obj.name);
+  }
     res.send({express: prettyJson});
 
   }).catch(e => {
