@@ -1,4 +1,5 @@
 import React from 'react';
+import Tile from './Tile';
 
 
 class SearchBar extends React.Component{
@@ -25,7 +26,7 @@ class SearchBar extends React.Component{
     .then((response) => response.json())
     .then((responseJSON) => {
       responseJSON.express.map(function(object){
-        restaurants.push(object.name);
+        restaurants.push(object);
         console.log(object.name);
       })
       self.setState({restaurants});
@@ -42,6 +43,8 @@ class SearchBar extends React.Component{
   //   if (response.status !== 200) throw Error(body.message);
   //   return body;
   // }
+
+  // google apie key AIzaSyAlWJlkvJi-FvaGQJ_J9Bj6-skZYyRHXjc
 
   handleSearchChange(e){
     this.setState({searchTerm: e.target.value});
@@ -62,7 +65,7 @@ class SearchBar extends React.Component{
       <input type="text" name="location" placeholder="Location..." value={this.state.locationTerm} onChange={this.handleLocationChange}/>
       </label>
       <button type="button" onClick={this.handleSearch}>Go</button>
-      {this.state.restaurants.map(restaurant => <li> {restaurant} </li>)}
+      {this.state.restaurants.map(restaurant => <li> <Tile restaurantName = {restaurant.name} restaurantURL= {restaurant.url}  imageURL= {restaurant.image_url}/> </li>)}
       </form>
     );
   };

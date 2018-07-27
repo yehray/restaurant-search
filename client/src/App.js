@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/NavBar';
+import Tile from './components/Tile';
 
 class App extends Component {
 
@@ -20,7 +21,7 @@ class App extends Component {
           <Header title={this.state.title}/>
           <NavBar/>
           <SearchBar/>
-          <Footer/>
+          <Footer title={this.state.title}/>
       </div>
     );
   }
