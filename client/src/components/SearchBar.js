@@ -44,8 +44,6 @@ class SearchBar extends React.Component{
   //   return body;
   // }
 
-  // google apie key AIzaSyAlWJlkvJi-FvaGQJ_J9Bj6-skZYyRHXjc
-
   handleSearchChange(e){
     this.setState({searchTerm: e.target.value});
   }

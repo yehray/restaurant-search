@@ -3,13 +3,14 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
 app.use(express.static(path.join(__dirname, 'build')));
+var config = require("./config.js");
 
 
 const yelp = require('yelp-fusion');
 
 // Place holder for Yelp Fusion's API Key. Grab them
 // from https://www.yelp.com/developers/v3/manage_app
-const apiKey = 'Gx5Dj1yuUvGIOu1iZ5OC8Lq2jT8xh7Yy_SGSnn2_-zc4wNO0Tuz0ehsI0o4IDu-sgzocHTBknrh-SqP8W5M6REkMDXiaIuBfxSfrIKxImrctBtDhvVzvGDeCrR1RW3Yx';
+const apiKey = config.YELP_API_KEY;
 const client = yelp.client(apiKey);
 
 app.get('/ping', function (req, res) {
