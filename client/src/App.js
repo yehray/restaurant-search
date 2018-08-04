@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/NavBar';
 import Tile from './components/Tile';
+import LoginPage from './components/auth/LoginPage';
 
 class App extends Component {
 
@@ -18,10 +19,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Header title={this.state.title}/>
-          <NavBar/>
-          <SearchBar/>
-          <Footer title={this.state.title}/>
+        <Route path="/login" component={LoginPage}/>
+        <Header title={this.state.title}/>
+        <NavBar/>
+        <SearchBar/>
+        <Footer title={this.state.title}/>
       </div>
     );
   }
