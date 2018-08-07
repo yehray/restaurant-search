@@ -7,11 +7,9 @@ import Footer from './components/Footer';
 import SearchBar from './components/SearchBar';
 import NavBar from './components/NavBar';
 import Tile from './components/Tile';
-import LoginPage from './components/auth/LoginPage';
-
 
 import Navigation from './components/shared/Navigation';
-import HomePage from './components/home/HomePage';
+import HomePage from './components/HomePage';
 import RegistrationForm from './components/auth/RegistrationForm';
 import config from './app.config';
 import LoginPage from './components/auth/LoginPage';

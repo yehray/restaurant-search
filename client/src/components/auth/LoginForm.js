@@ -43,6 +43,7 @@ export default withAuth(class LoginForm extends React.Component {
   }
 
   render() {
+    console.log("d");
     if (this.state.sessionToken) {
       this.props.auth.redirect({ sessionToken: this.state.sessionToken });
       return null;

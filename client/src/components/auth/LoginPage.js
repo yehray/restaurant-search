@@ -23,6 +23,7 @@ export default withAuth(class Login extends Component {
   }
 
   render() {
+    console.log(this.props.baseUrl);
     if (this.state.authenticated === null) return null;
     return this.state.authenticated ?
       
